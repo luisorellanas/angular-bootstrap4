@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" name="name" placeholder="nombre" #name="ngModel" [(ngModel)]="project.name"
+                    required>
+                <div *ngIf="name.touched && !name.valid" class="alert alert-danger" role="alert">
+                    Nombre no valido o vacio
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="category">Categoria</label>
+                <input type="text" required class="form-control" placeholder="" name="category" #category="ngModel"
+                    [(ngModel)]="project.category">
+                <div *ngIf="category.touched && !category.valid " class="alert alert-danger" role="alert">
+                    Nombre no valido o vacio
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="year">Año</label>
+                <input type="number" required class="form-control" name="year" #year="ngModel" [(ngModel)]="project.year">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="langs">Langs</label>
+                <input type="text" required class="form-control" name="langs" #langs="ngModel" [(ngModel)]="project.langs">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Imagen</label>
+                <input type="file" class="form-control" id="inputAddress2">
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <label for="description">escripcion</label>
+            <textarea class="form-control" required name="description" id="" cols="30" rows="10" #description="ngModel"
+                [(ngModel)]="project.description"></textarea>
+        </div>
+        <!--- <button type="submit" class="btn btn-primary">Sign in</button>  -->
+        <input type="submit" class="btn btn-primary" value="Enviar" [disabled]="!projectForm.form.valid">
+    </form>
+</div>
